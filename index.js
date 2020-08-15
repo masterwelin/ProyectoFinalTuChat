@@ -17,6 +17,9 @@ firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore();
 
 function register() {
+
+    compara();
+
     let email = document.getElementById('email').value;
     let password = document.getElementById('inputPass').value;
     let vName = document.getElementById('inTxtName').value;
@@ -31,10 +34,7 @@ function register() {
     console.log('email ${email}');
     console.log('password. ${password}');
 
-
-
     firebase.auth().createUserWithEmailAndPassword(email, password).then(res => {
-
 
         db.collection("users").add({
             name: vName,
@@ -48,7 +48,7 @@ function register() {
             phone: vPhone
         }).then(function (docRef) {
             console.log("Document written");
-
+            
             alert("Registro Exitoso! sera enviado a la pagina de inicio...");
 
             document.getElementById('email').value = "";
@@ -61,6 +61,14 @@ function register() {
             document.getElementById('inTxtGender').value = "";
             document.getElementById('inTxtBird').value = "";
             document.getElementById('inTxtPhone').value = "";
+
+            firebase.auth().signOut().then(function () {
+                // Sign-out successful.
+                console.log("Deslogueo exitoso");
+            }).catch(function (error) {
+                console.log("Error deslogueando usuario");
+                // An error happened.
+            });
 
             window.location = "index.html";
 
@@ -113,8 +121,8 @@ function save() {
 
 function compara() {
 
-    if (document.form1.password.value != document.form1.repassword.value) {
-        alert('Las contraseña no son identicas, por favor reintente.');
+    if (document.getElementById("inputPass").value != document.getElementById("InputRepass").value) {
+        alert('Las contraseña no son identicas, por favor Corrija.');
         return false;
     }
     else {
