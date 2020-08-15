@@ -108,6 +108,30 @@
 
 	}
 
+	var password = document.getElementById("inputPass")
+  , confirm_password = document.getElementById("InputRepass");
+
+function validatePassword(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Passwords Don't Match");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+
+firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+        console.log("existe un usuario logueado");
+        window.location = "perfil.html";
+        // User is signed in.
+    } else {
+        console.log("no existe un usuario logueado");
+        // No user is signed in.
+    }
+});
 
 </script>
 

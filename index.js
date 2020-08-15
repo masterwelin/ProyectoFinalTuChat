@@ -30,9 +30,8 @@ function register() {
     let vBird = document.getElementById('inTxtBird').value;
     let vPhone = document.getElementById('inTxtPhone').value;
 
-    console.log("se activo el evento onclick");
-    console.log('email ${email}');
-    console.log('password. ${password}');
+    //console.log("se activo el evento onclick");
+    //console.log('email ${email}');
 
     firebase.auth().createUserWithEmailAndPassword(email, password).then(res => {
 
@@ -47,8 +46,8 @@ function register() {
             bird: vBird,
             phone: vPhone
         }).then(function (docRef) {
-            console.log("Document written");
-            
+            //console.log("Document written");
+
             alert("Registro Exitoso! sera enviado a la pagina de inicio...");
 
             document.getElementById('email').value = "";
@@ -118,19 +117,6 @@ function save() {
 
 }
 
-
-function compara() {
-
-    if (document.getElementById("inputPass").value != document.getElementById("InputRepass").value) {
-        alert('Las contraseña no son identicas, por favor Corrija.');
-        return false;
-    }
-    else {
-        return true;
-    }
-
-}
-
 function comprobar_user() {
 
     var user = firebase.auth().currentUser;
@@ -167,33 +153,21 @@ function logOut() {
     });
 }
 
-function obtenerPerfil(){
+function obtenerPerfil() {
 
-var user = firebase.auth().currentUser;
-var name, email, photoUrl, uid, emailVerified;
+    var user = firebase.auth().currentUser;
+    var name, email, photoUrl, uid, emailVerified;
 
-if (user != null) {
-  name = user.displayName;
-  email = user.email;
-  photoUrl = user.photoURL;
-  emailVerified = user.emailVerified;
-  uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
-                   // this value to authenticate with your backend server, if
-                   // you have one. Use User.getToken() instead.
+    if (user != null) {
+        name = user.displayName;
+        email = user.email;
+        photoUrl = user.photoURL;
+        emailVerified = user.emailVerified;
+        uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
+        // this value to authenticate with your backend server, if
+        // you have one. Use User.getToken() instead.
+    }
+
 }
 
-}
 
-var password = document.getElementById("inputPass")
-  , confirm_password = document.getElementById("InputRepass");
-
-function validatePassword(){
-  if(password.value != confirm_password.value) {
-    confirm_password.setCustomValidity("Passwords Don't Match");
-  } else {
-    confirm_password.setCustomValidity('');
-  }
-}
-
-password.onchange = validatePassword;
-confirm_password.onkeyup = validatePassword;
