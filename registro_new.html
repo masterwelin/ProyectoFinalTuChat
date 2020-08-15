@@ -2,7 +2,9 @@
 <html>
 
 <head>
+	
 	<meta charset="utf-8">
+
 	<title>Registro TuChat</title>
 
 	<link rel="stylesheet" type="text/css" href="CSS\bootstrap.min.css">
@@ -12,23 +14,16 @@
 
 	<link rel="stylesheet" type="text/css" href="CSS\style.css">
 
-	
-
 	<header>
 
 	</header>
-	
-	<!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
 
-  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-  <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js"></script>
-
-  <!-- Add Firebase products that you want to use -->
-  <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-firestore.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase.js"></script>
-  <script src="index.js"> </script>
-
+	<script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-firestore.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-database.js"></script>
+	<!--<script src="https://www.gstatic.com/firebasejs/7.16.1/firebase.js"></script>-->
+	<script src="index.js"> </script>
 
 </head>
 
@@ -57,7 +52,8 @@
 
 
 				<!--<label for="email2">Email Alternativo</label>-->
-				<input type="email" name="inTxtEmail2" id="inTxtEmail2" placeholder="Correo Alternativo" class="input-100">
+				<input type="email" name="inTxtEmail2" id="inTxtEmail2" placeholder="Correo Alternativo"
+					class="input-100">
 
 
 				<!--<label for="user">Nombre de Usuario</label>-->
@@ -71,22 +67,24 @@
 					<option value="O">Otro</option>
 				</select>
 
-				<input type="Password" name="password" id="inputPass" placeholder="Contraseña" class="input-48" minlength="8" required>
-
-				<input type="Password" name="repassword" id="InputRepass" placeholder="Confirme Contraseña" class="input-48"
+				<input type="Password" name="password" id="inputPass" placeholder="Contraseña" class="input-48"
 					minlength="8" required>
+
+				<input type="Password" name="repassword" id="InputRepass" placeholder="Confirme Contraseña"
+					class="input-48" minlength="8" required>
 
 
 
 				<!--<label for="fecha">Nacimiento</label>-->
 
-				<input type="date" name="fecha_nac" id="inTxtBird" placeholder="Fecha Nacimiento" class="input-48" required>
+				<input type="date" name="fecha_nac" id="inTxtBird" placeholder="Fecha Nacimiento" class="input-48"
+					required>
 
 				<!--<label for="tel">Telefono</label>-->
 				<input type="text" name="tel" id="inTxtPhone" placeholder="Telefono" class="input-48">
 
 				<input type="button" name="save" id="sv" value="Registrarse" class="input-100 btn btn-success"
-					onClick="register()"/>
+					onClick="register()" />
 
 			</div>
 
