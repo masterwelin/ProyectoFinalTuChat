@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	
+
 	<meta charset="utf-8">
 
 	<title>Registro TuChat</title>
@@ -67,13 +67,11 @@
 					<option value="O">Otro</option>
 				</select>
 
-				<input type="Password" name="password" id="inputPass" placeholder="Contraseña" class="input-48"
-					minlength="8" required>
+					<input type="Password" name="password" id="inputPass" placeholder="Contraseña" class="input-48"
+						minlength="8" required>
 
-				<input type="Password" name="repassword" id="InputRepass" placeholder="Confirme Contraseña"
-					class="input-48" minlength="8" required>
-
-
+					<input type="Password" name="repassword" id="InputRepass" placeholder="Confirme Contraseña"
+						class="input-48" minlength="8" required>
 
 				<!--<label for="fecha">Nacimiento</label>-->
 
@@ -101,6 +99,7 @@
 
 		if (document.form1.password.value != document.form1.repassword.value) {
 			alert('Las contraseña no son identicas, por favor reintente.');
+			throw new Error("Something went badly wrong!");
 			return false;
 		}
 		else {
