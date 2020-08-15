@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Registro TuChat</title>
+
+	<link rel="stylesheet" type="text/css" href="CSS\bootstrap.min.css">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+		integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+	<link rel="stylesheet" type="text/css" href="CSS\style.css">
+
+	
+
+	<header>
+
+	</header>
+	
+	<!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js"></script>
+
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase.js"></script>
+  <script src="index.js"> </script>
+
+
+</head>
+
+<body>
+
+	<div class="reg_form">
+
+		<form method="POST" name="form1" action="" class="reg_form_box">
+
+			<div class="container-inputs">
+
+				<h3>Formulario de Registro</h3>
+
+				<!--<label for="name">Nombre</label>-->
+
+
+				<input type="text" name="name" id="inTxtName" placeholder="Nombre" class="input-48" required="">
+
+				<!--<label for="l_name">Apellido</label>-->
+
+				<input type="text" name="l_name" id="inTxtLastName" placeholder="Apellido" class="input-48" required>
+
+				<!--<label for="email">Correo Eletrónico</label>-->
+
+				<input type="email" name="email" id="email" placeholder="Correo Electronico" class="input-100" required>
+
+
+				<!--<label for="email2">Email Alternativo</label>-->
+				<input type="email" name="inTxtEmail2" id="inTxtEmail2" placeholder="Correo Alternativo" class="input-100">
+
+
+				<!--<label for="user">Nombre de Usuario</label>-->
+				<input type="text" name="user" id="inTxtUserName" placeholder="Usuario" class="input-48" required="">
+
+				<!--<label for="sexo">Sexo</label>-->
+
+				<select name="sexo" id="inTxtGender" class="input-48" value="" placeholder="Sexo" required>
+					<option value="M">Hombre</option>
+					<option value="F">Mujer</option>
+					<option value="O">Otro</option>
+				</select>
+
+				<input type="Password" name="password" id="inputPass" placeholder="Contraseña" class="input-48" minlength="8" required>
+
+				<input type="Password" name="repassword" id="InputRepass" placeholder="Confirme Contraseña" class="input-48"
+					minlength="8" required>
+
+
+
+				<!--<label for="fecha">Nacimiento</label>-->
+
+				<input type="date" name="fecha_nac" id="inTxtBird" placeholder="Fecha Nacimiento" class="input-48" required>
+
+				<!--<label for="tel">Telefono</label>-->
+				<input type="text" name="tel" id="inTxtPhone" placeholder="Telefono" class="input-48">
+
+				<input type="button" name="save" id="sv" value="Registrarse" class="input-100 btn btn-success"
+					onClick="register()"/>
+
+			</div>
+
+
+		</form>
+
+	</div>
+
+</body>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript">
+
+	function compara() {
+
+		if (document.form1.password.value != document.form1.repassword.value) {
+			alert('Las contraseña no son identicas, por favor reintente.');
+			return false;
+		}
+		else {
+			return true;
+		}
+
+	}
+
+
+</script>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TuChat</title>
+    <link rel="stylesheet" type="text/css" href="CSS\bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-app.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-firestore.js"></script>
+    <script src="index.js"></script>
+        
+
+
+    <style>
+        h1 {
+            color: white;
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="centrar">
+        <h2>Bienvenido a TuChat</h2>
+    </div>
+
+    <div class="loginBox">
+
+        <img src="user.png" class="user">
+
+        <h2>Iniciar Sesión</h2>
+
+        <form method="POST" action="">
+
+            <p>Email</p>
+            <input type="Email" name="email" id="InputEmailLg" placeholder="Introduce tu Emal">
+
+            <p>Contraseña</p>
+
+            <input type="password" name="password" id="InputPassLg" placeholder="********" maxlength="15" minlength="6">
+
+            <input type="button" class="btn btn-success" name="" value="Iniciar" onClick="login()"/>
+
+            <a href="#" id="forgot">Olvide mi contraseña</a>
+            <a href="registro_new.html" id="register">Registrarse</a>
+            <!--<div><input type="button" class="btn btn-info" onClick="comprobar_user()" value="verificar"></div>-->
+        </form>
+    </div>
+
+
+
+</body>
+
+<footer>All rights reserved</footer>
+
+</html>
