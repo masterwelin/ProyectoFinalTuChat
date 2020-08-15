@@ -48,6 +48,14 @@ h2{
 
 }
 
+.btnLogout{
+
+		position: fixed;
+		top: 0;
+		right: 0;
+		width: 10%;
+}
+
 .loginBox input[type="Email"],
 .loginBox input[type="password"]{
 	border: none;

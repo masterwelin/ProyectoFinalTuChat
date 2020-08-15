@@ -18,12 +18,40 @@
     <script src="index.js"></script>
 
     <title>Perfil</title>
-
+    <style>
+        .btnCargar{
+            width: 10%;
+        }
+        .fullOpacity{
+            opacity:100%; /* Opacidad 60% */
+}
+    </style>    
 </head>
 
 <body>
-    <input type="button" class="btn btn-warning" value="logOut" onclick="logOut()">
-    <input type="button" class="btn btn-warning" value="logOut2" onclick="obtenerPerfil()">
+
+    <input type="button" class="btn btn-warning btnLogout" value="Cerrar Sesion" onclick="logOut()">
+
+    <div class="container" style="color:black;">
+
+        <h2>Este es tu perfil de usuario</h2>
+
+        <div>
+
+            <div class="card" id="fperfil">
+
+                <input type="file"><button class="btn btn-info" onclick="" id="btnCargar">Subir Foto de perfil</button>
+                <div class="card-body" width="100px" heigth="100px">
+                    <img src="" alt="" id="Image">
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
 </body>
 
 <script>
@@ -39,14 +67,14 @@
             photoUrl = user.photoURL;
             emailVerified = user.emailVerified;
             uid = user.uid;
-            
+
             alert(uid);
         }
 
     }
-    
+
     obtenerPerfil();
 
-    </script>
+</script>
 
 </html>
