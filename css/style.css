@@ -67,6 +67,7 @@ h2{
 	font-size: 16px;
 
 }
+
 ::placeholder{
 color: rgba(255,255,255,.5)
 }
@@ -88,13 +89,6 @@ color: rgba(255,255,255,.5)
 	color: #262626;
 
 }
-
-/*.loginBox a {
-	color: #fff;
-	font-size: 14px;
-	font-weight: bold;
-	text-decoration: none;
-}*/
 
 .loginBox #forgot {
 	color: #fff;
@@ -125,21 +119,7 @@ footer {
   }
 
   .reg_form {
-
-
 	box-sizing: border-box;
-	/*position: absolute;*/
-	/*top: 50%;
-	left: 75%;
-	transform: translate(-50%, -50%);
-	width: 550px;
-	height: 500px;
-	padding: 80px 40px;
-	box-sizing: border-box;
-	background: rgba(0,0,0,.5);
-	border-radius: 5px;
-	display: flex;*/
-
 }
 
 .reg_form_box{
@@ -151,12 +131,6 @@ footer {
 	background: rgba(0,0,0,.5); 
 	border-radius: 5px;
 }
-
-/*.reg_form_box h3{
-	
-	position: absolute;
-	display: flex;
-}*/
 
 .reg_form h3{
 	
@@ -214,22 +188,6 @@ input:invalid {
 .container-inputs input[type="submit"]{
  border-radius: 7px;
  border: none;
-}
-
-
-/*.reg_form input{
-	position: fixed;
-	border: none;
-	border-bottom: 1px solid #fff;
-	background: transparent; 
-	outline: none;
-	width: 50%;
-
-}*/
-
-.reg_form input[type="text"]{
-	
-
 }
 
 

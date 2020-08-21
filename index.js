@@ -32,6 +32,7 @@ function register() {
 
     //console.log("se activo el evento onclick");
     //console.log('email ${email}');
+    //console.log($('#inTxtPhone').val());
 
     firebase.auth().createUserWithEmailAndPassword(email, password).then(res => {
 
@@ -44,7 +45,9 @@ function register() {
             pass: password,
             gender: vGender,
             bird: vBird,
-            phone: vPhone
+            phone: vPhone,
+            aboutMe: "",
+            photo: ""
         }).then(function (docRef) {
             //console.log("Document written");
 
@@ -106,8 +109,7 @@ function login() {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
-        console.log('Error code ${errorCode}');
-        console.log('Error message ${errorMessage}');
+        alert('Error iniciando sesion o datos incorrectos');
         // ...
     });
 
@@ -132,7 +134,8 @@ function comprobar_user() {
 
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
-        console.log("existe un usuario logueado");
+        console.log("existe un usuario logueado: "+ user.email + " uid: "+user.uid);
+        cargaFoto();
         //window.location = "perfil.html";
         // User is signed in.
     } else {
@@ -153,7 +156,7 @@ function logOut() {
     });
 }
 
-function obtenerPerfil() {
+/*function obtenerPerfil() {
 
     var user = firebase.auth().currentUser;
     var name, email, photoUrl, uid, emailVerified;
@@ -168,6 +171,75 @@ function obtenerPerfil() {
         // you have one. Use User.getToken() instead.
     }
 
+    //console.log(user);
+}*/
+
+function subirFoto(){
+    var user = firebase.auth().currentUser;
+    const ref = firebase.storage().ref();
+    const file = document.querySelector("#foto").files[0];
+    //const name = new Date() +'-'+ file.name
+    //const name = user.email+".jpg";
+    const name = user.email;
+    
+    if(file==null){
+        alert("debe seleccionar una imagen...");
+    }else{
+        alert('Subiendo foto');
+        const metadata = {contentType: file.type
+
+        }
+
+        const task = ref.child(name).put(file, metadata)
+
+        
+
+        task.then(snapshot => snapshot.ref.getDownloadURL()).then( url =>{
+            console.log(url);
+            alert('Imagen subida exitosamente');
+            const imageElement = document.querySelector("#Image");
+            imageElement.src = url;
+        })
+    }
+    
+    console.log(ref);
 }
 
 
+function cargaFoto(){
+
+const ref = firebase.storage().ref();
+var user = firebase.auth().currentUser;
+console.log('cargando foto');
+ref.child(user.email).getDownloadURL().then(function(url) {
+  // Or inserted into an <img> element:
+  var img = document.querySelector("#Image");
+  img.src = url;
+}).catch(function(error) {
+  // Handle any errors
+  ref.child("default-user.jpg").getDownloadURL().then(function(url) {
+    // Or inserted into an <img> element:
+    var img = document.querySelector("#Image");
+    img.src = url;
+  }).catch(function(error) {
+    // Handle any errors
+  });
+});
+}
+
+function borrarFoto(){
+    // Create a reference to the file to delete
+    var user = firebase.auth().currentUser;
+    var refu = firebase.storage().ref();
+var refa = refu.child(user.email);
+
+// Delete the file
+refa.delete().then(function() {
+    alert("imagen eliminada exitosamente!");
+  // File deleted successfully
+}).catch(function(error) {
+    alert('Error eliminando imagen!');
+  // Uh-oh, an error occurred!
+});
+
+}
