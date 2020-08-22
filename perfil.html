@@ -21,7 +21,7 @@
     <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-storage.js"></script>
     <script src="index.js"></script>
 
-    <title>Perfil</title>
+    <title>TuChat</title>
     <style>
         .btnCargar {
             width: 10%;
@@ -31,15 +31,16 @@
             opacity: 100%;
             /* Opacidad 60% */
         }
+
         .centrar {
             text-align: center;
         }
 
-        h3{
+        h3 {
             color: black;
             text-align: center;
+            padding: 5%;
         }
-        
     </style>
 </head>
 
@@ -49,30 +50,46 @@
 
     <div class="container" style="color:black;">
 
-        <h2>Este es tu perfil de usuario</h2>
+        <h2>Bienvenido a TuChat!</h2>
 
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-4">
-                    
+
                     <div class="card" id="fperfil">
-                        <div><h3>Perfil</h3></div>
+                        <div>
+                            <h3>Tu Perfil</h3>
+                        </div>
                         <input type="file" id="foto">
-                    <div class="card-body center" width="50%" heigth="50%" style="border-radius: 20%;" align="center">
-                            <img src="gs://tuchat-c2c57.appspot.com/default-user.jpg" alt="" id="Image" style="border-radius: 90%; text-align: center;" width="70%" heigth="70%">
+                        <div class="card-body center" width="50%" heigth="50%" style="border-radius: 20%;"
+                            align="center">
+                            <img src="gs://tuchat-c2c57.appspot.com/default-user.jpg" alt="" id="Image"
+                                style="border-radius: 90%; text-align: center;" width="70%" heigth="70%">
                         </div>
                         <table width="100%">
                             <tr>
-                        <td width="100%"><button class="btn btn-primary" onclick="subirFoto()" id="btnCargar">Editar Foto</button></td>
-                        <td width="100%"><button class="btn btn-danger" onclick="borrarFoto()" id="btnBorrar">Eliminar Foto</button></td>
-                    </tr>
-                    </table>
+                                <td width="100%"><button class="btn btn-primary" onclick="subirFoto()"
+                                        id="btnCargar">Editar Foto</button></td>
+                                <td width="100%"><button class="btn btn-danger" onclick="borrarFoto()"
+                                        id="btnBorrar">Eliminar Foto</button></td>
+                            </tr>
+
+                        </table>
+                        <div>
+                            <h3>Acerca de Mi</h3>
+                        </div>
+                        <div>
+                            <button id="btnModal">Abrir modal</button>
+                        </div>
                     </div>
                 </div>
 
                 <div class="col-md-8">
                     <div>
                         <h2>chat</h2>
+                        <div class="container">
+
+                        </div>
                     </div>
                 </div>
 
@@ -80,6 +97,7 @@
         </div>
 
     </div>
+
 
 </body>
 
