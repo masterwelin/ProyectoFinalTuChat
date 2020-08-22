@@ -11,7 +11,9 @@ El inicio de sesión está en la pagina principal Index.html, al cual serás red
 El inicio de sesion cuenta con un formulario basico que te permite desde él:
 
 Ir a la ventana de registro de usuarios al portal.
+
 *Loguear o iniciar una sesión.
+
 *Recuperar contrasena de tu usuario.
 
 El formulario de inicio de sesión, cuenta con las validaciones necesarias para evitar que el usuario intente acceder introduciendo algun email invalido asi como tratar de entrar con los datos nulos.
@@ -22,10 +24,14 @@ Puedes iniciar sesión una ves realizado el proceso de registro a traves del for
 
 La ventana de registro de usuarios contiene un formulario basico para registrarse en el portal.
 
-Este consta con las validaciones necesarias tales como.
+Este consta con las validaciones necesarias tales como:
+
 *Validacion de correo.
+
 *Minimo de contrasena segura.
+
 *Repetir contrasena para asegurar al usuario.
+
 *Campos requeridos necesarios.
 
 Una ves registrado y habiendo pasado todas las validaciones, el sistema te redirigira a tu pagina de perfil para que empieces a utilizar el portal web.
