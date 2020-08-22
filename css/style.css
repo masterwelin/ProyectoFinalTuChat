@@ -239,3 +239,13 @@ h2{
 	text-decoration: none;
 	cursor: pointer;
 }
+
+.btnCargar {
+	width: 10%;
+}
+
+.fullOpacity {
+	opacity: 100%;
+	/* Opacidad 60% */
+}
+
