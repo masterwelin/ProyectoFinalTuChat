@@ -49,19 +49,43 @@ Al cerrar la sesión, sera automáticamente redirigido a la pantalla de inicio o
 
 ##Herramientas Utilizadas
 
-Entre las herrameitas utilizadas se puede mensionar.
+Entre las herramientas utilizadas se puede mensionar.
 
 **Javascript** Vanilla
+
 **Bootstrap**
+
 **HTML5** 
+
 **CSS**
+
 **JQUERY** 
-**Firebase** (Como motor de base de datos) con algunas de sus funcionalidades basicas como
+
+**Firebase** (Como motor de base de datos) con algunas de sus funcionalidades basicas como:
+
 Firebase app
+
 Firebase Store
+
 Firebase firestore
+
 Firebase database
+
 Firebase Autenthication
+
 **Github**
+
 **MarkdownPad2** el cual me permitio realizar el Readme.MD
+
 **Visual Studio Code** como editor de codigo con su gran liveServer
+
+##Pasos para hacer setup del proyecto
+
+Para hacer setup del proyecto basta con descargarse el repositorio completo e iniciar el archivo index.html en el navegador de su preferencia.
+
+Links del repositorio.
+
+https://github.com/masterwelin/ProyectoFinalTuChat.git
+https://github.com/masterwelin/ProyectoFinalTuChat/tree/master
+
+Todo lo que se necesitará es un navegador web e internet, ya que la base de datos con la que estará interactuando el proyecto es FireBase que esta totalmente en la nube y lo demas como las hojas de estilo estan en el repositorio.
