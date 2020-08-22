@@ -134,7 +134,7 @@ function comprobar_user() {
 
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
-        console.log("existe un usuario logueado: "+ user.email + " uid: "+user.uid);
+        console.log("existe un usuario logueado: " + user.email + " uid: " + user.uid);
         cargaFoto();
         //window.location = "perfil.html";
         // User is signed in.
@@ -174,72 +174,100 @@ function logOut() {
     //console.log(user);
 }*/
 
-function subirFoto(){
+function subirFoto() {
     var user = firebase.auth().currentUser;
     const ref = firebase.storage().ref();
     const file = document.querySelector("#foto").files[0];
     //const name = new Date() +'-'+ file.name
     //const name = user.email+".jpg";
     const name = user.email;
-    
-    if(file==null){
+
+    if (file == null) {
         alert("debe seleccionar una imagen...");
-    }else{
+    } else {
         alert('Subiendo foto');
-        const metadata = {contentType: file.type
+        const metadata = {
+            contentType: file.type
 
         }
 
         const task = ref.child(name).put(file, metadata)
 
-        
 
-        task.then(snapshot => snapshot.ref.getDownloadURL()).then( url =>{
+
+        task.then(snapshot => snapshot.ref.getDownloadURL()).then(url => {
             console.log(url);
             alert('Imagen subida exitosamente');
             const imageElement = document.querySelector("#Image");
             imageElement.src = url;
         })
     }
-    
+
     console.log(ref);
 }
 
 
-function cargaFoto(){
+function cargaFoto() {
 
-const ref = firebase.storage().ref();
-var user = firebase.auth().currentUser;
-console.log('cargando foto');
-ref.child(user.email).getDownloadURL().then(function(url) {
-  // Or inserted into an <img> element:
-  var img = document.querySelector("#Image");
-  img.src = url;
-}).catch(function(error) {
-  // Handle any errors
-  ref.child("default-user.jpg").getDownloadURL().then(function(url) {
-    // Or inserted into an <img> element:
-    var img = document.querySelector("#Image");
-    img.src = url;
-  }).catch(function(error) {
-    // Handle any errors
-  });
-});
+    const ref = firebase.storage().ref();
+    var user = firebase.auth().currentUser;
+    console.log('cargando foto');
+    ref.child(user.email).getDownloadURL().then(function (url) {
+        // Or inserted into an <img> element:
+        var img = document.querySelector("#Image");
+        img.src = url;
+    }).catch(function (error) {
+        // Handle any errors
+        ref.child("default-user.jpg").getDownloadURL().then(function (url) {
+            // Or inserted into an <img> element:
+            var img = document.querySelector("#Image");
+            img.src = url;
+        }).catch(function (error) {
+            // Handle any errors
+        });
+    });
 }
 
-function borrarFoto(){
+function borrarFoto() {
     // Create a reference to the file to delete
     var user = firebase.auth().currentUser;
     var refu = firebase.storage().ref();
-var refa = refu.child(user.email);
+    var refa = refu.child(user.email);
 
-// Delete the file
-refa.delete().then(function() {
-    alert("imagen eliminada exitosamente!");
-  // File deleted successfully
-}).catch(function(error) {
-    alert('Error eliminando imagen!');
-  // Uh-oh, an error occurred!
-});
+    // Delete the file
+    refa.delete().then(function () {
+        alert("imagen eliminada exitosamente!");
+        refu.child("default-user.jpg").getDownloadURL().then(function (url) {
+            // Or inserted into an <img> element:
+            var img = document.querySelector("#Image");
+            img.src = url;
+        }).catch(function (error) {
+            // Handle any errors
+        });
+        // File deleted successfully
+    }).catch(function (error) {
+        alert('Error eliminando imagen!');
+        // Uh-oh, an error occurred!
+    });
 
+}
+
+function passReset() {
+
+    if (document.getElementById("InputEmailLg").value) {
+        alert("debe digitar un correo para solicitar reestablecimientode contrasena");
+        console.log("campo email nulo");
+        //return false;
+    } else {
+
+        var auth = firebase.auth();
+        var emailAddress = document.getElementById("InputEmailLg").value;
+
+        auth.sendPasswordResetEmail(emailAddress).then(function () {
+            alert('Se ha enviado un email de reestablecimiento de contrasena a su correo ' + emailAddress);
+            // Email sent.
+        }).catch(function (error) {
+            // An error happened.
+        });
+    }
 }
