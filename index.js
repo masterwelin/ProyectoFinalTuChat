@@ -10,16 +10,17 @@ var firebaseConfig = {
 };
 
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig); //Inicializa la app Firebase
 
-// Get a reference to the database service
-//var database = firebase.database();
-var db = firebase.firestore();
+var db = firebase.firestore(); 
 
 function register() {
 
-    compara();
+    //funcion de registro, utilizada al pulsar el boton registrarse en el formulario de registro.
 
+    compara(); //compara si los campos de contrasena son iguales para si no es asi, mandar una advertencia.
+
+    //seteando las variables que llenaran la informacion basica del perfil del usuario.
     let email = document.getElementById('email').value;
     let password = document.getElementById('inputPass').value;
     let vName = document.getElementById('inTxtName').value;
@@ -36,6 +37,7 @@ function register() {
 
     firebase.auth().createUserWithEmailAndPassword(email, password).then(res => {
 
+        //se anaden todos los datos recolectados al la coleccion users
         db.collection("users").add({
             name: vName,
             lastname: vLastName,
@@ -49,7 +51,6 @@ function register() {
             aboutMe: "",
             photo: ""
         }).then(function (docRef) {
-            //console.log("Document written");
 
             alert("Registro Exitoso! sera enviado a la pagina de inicio...");
 
@@ -63,16 +64,17 @@ function register() {
             document.getElementById('inTxtGender').value = "";
             document.getElementById('inTxtBird').value = "";
             document.getElementById('inTxtPhone').value = "";
-
+            
+            //Luego de registrarse, firebase autologuea al usuario, por lo que
+            //se desloguea al usuario para que este inicie sesion por su cuenta.
             firebase.auth().signOut().then(function () {
-                // Sign-out successful.
+                // Sign-out successful. desloguea al usuario y lo redirige al index
                 console.log("Deslogueo exitoso");
+                window.location = "index.html";
             }).catch(function (error) {
                 console.log("Error deslogueando usuario");
                 // An error happened.
             });
-
-            window.location = "index.html";
 
         })
             .catch(function (error) {
@@ -100,7 +102,7 @@ function login() {
 
 
     firebase.auth().signInWithEmailAndPassword(email, password).then(res => {
-
+        //Loguea al usuario, limpia los campos y lo redirige a la pagina del chat.
         document.getElementById('InputEmailLg').value = '';
         document.getElementById('InputPassLg').value = '';
         alert('Usuario logueado');
@@ -112,10 +114,6 @@ function login() {
         alert('Error iniciando sesion o datos incorrectos');
         // ...
     });
-
-}
-
-function save() {
 
 }
 
@@ -192,9 +190,7 @@ function subirFoto() {
         }
 
         const task = ref.child(name).put(file, metadata)
-
-
-
+        //cuando la foto es subida exitosamente, inmediatamente se cambia la foto para que el usuario vea el cambio.
         task.then(snapshot => snapshot.ref.getDownloadURL()).then(url => {
             console.log(url);
             alert('Imagen subida exitosamente');
@@ -208,7 +204,7 @@ function subirFoto() {
 
 
 function cargaFoto() {
-
+    //carga la foto al inicio de la sesion y cuando sea necesario
     const ref = firebase.storage().ref();
     var user = firebase.auth().currentUser;
     console.log('cargando foto');
@@ -218,6 +214,7 @@ function cargaFoto() {
         img.src = url;
     }).catch(function (error) {
         // Handle any errors
+        //si el usurio no tiene foto, entra en este apartado, poniendo una foto pre-definida.
         ref.child("default-user.jpg").getDownloadURL().then(function (url) {
             // Or inserted into an <img> element:
             var img = document.querySelector("#Image");
@@ -233,7 +230,7 @@ function borrarFoto() {
     var user = firebase.auth().currentUser;
     var refu = firebase.storage().ref();
     var refa = refu.child(user.email);
-
+    //Borra la foto del usuario y carga la foto por defecto
     // Delete the file
     refa.delete().then(function () {
         alert("imagen eliminada exitosamente!");
@@ -253,7 +250,9 @@ function borrarFoto() {
 }
 
 function passReset() {
-
+    //primero se comprueba que el usuario haya introducido un email en la casilla de email
+    //si el email existe y esta correcto se le envia al correo
+    //los pasos para reestablecer su contrasena.
     if (document.getElementById("InputEmailLg").value) {
         alert("debe digitar un correo para solicitar reestablecimientode contrasena");
         console.log("campo email nulo");
@@ -272,3 +271,13 @@ function passReset() {
     }
 }
 
+/*firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+        console.log("existe un usuario logueado");
+        window.location = "perfil.html";
+        // User is signed in.
+    } else {
+        console.log("no existe un usuario logueado");
+        // No user is signed in.
+    }
+});*/
